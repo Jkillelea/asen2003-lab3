@@ -16,17 +16,14 @@ function [results] = analyze(data)
   speed    = data.slide_speed;
 
   i = 1;
-  while true % iterate over the positions and ensure that all are between 0 and 359.999...
+  while max(position) >= 360 % iterate over the positions and ensure that all are between 0 and 359.999...
     if i > size(position, 1) % if hit end of list
       i = 1;                 % restart
     end
     if position(i) >= 360              % if number found is greater than max
-      position(i) = position(i) - 360; % reduce
+      position(i) = position(i) - 360; % decrement by 360
     end
-    if max(position) < 360 % if whole list has no values >= 360
-      break;               % we're done
-    end
-    i = i + 1;             % else, next!
+    i = i + 1;             % next
   end
 
   results = sortrows([position, speed]); % return
