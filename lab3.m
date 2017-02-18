@@ -23,12 +23,12 @@
 % Matthew Jonas
 
 % %%%% b: %%%%
-  clear all; close all; clc;
+clear all; close all; clc;
 
 % %%%% c: %%%%
-  r = 8   *(10^-2); % m
-  d = 17  *(10^-2); % m
-  l = 25.5*(10^-2); % m
+r = 8   *(10^-2); % m
+d = 17  *(10^-2); % m
+l = 25.5*(10^-2); % m
 
 % %%%% d: %%%%
 data_folder = 'Locomotive Testing Data';
