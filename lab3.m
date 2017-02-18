@@ -31,9 +31,9 @@
   l = 25.5*(10^-2); % m
 
 % %%%% d: %%%%
-  data_folder = 'Locomotive Testing Data';
-  files    = dir([data_folder, '/', '*V']); % regex. Learn it.
-  numfiles = size(files, 1);
+data_folder = 'Locomotive Testing Data';
+files    = dir([data_folder, '/', '*V']); % regex. Learn it.
+numfiles = size(files, 1);
 
 % %%%% e: %%%%
 results = {}; % for storing results
