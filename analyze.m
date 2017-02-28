@@ -27,12 +27,12 @@ function data = analyze(data)
   % truncate all the data to between 0 and 6 revolutions
   max_index = find(position > 6*360);
   max_index = max_index(1);
-  data.times                 = data.times(1:max_index);
-  data.wheel_position        = data.wheel_position(1:max_index);
-  data.wheel_speed           = data.wheel_speed(1:max_index);
-  data.slide_position        = data.slide_position(1:max_index);
-  data.actual_sample_time_ms = data.actual_sample_time_ms(1:max_index);
-  data.pos                   = data.pos(1:max_index);
-  data.speed                 = data.speed(1:max_index);
 
+  tags = fieldnames(data); % iterate through and truncate fields
+  for i = 1:numel(tags);
+    tag = tags{i};
+    if ~(strcmp(tag, 'trialname') || strcmp(tag, 'filename')) % unless those fields are strings we need to leave intact
+      data.(tag) = data.(tag)(1:max_index);
+    end
+  end
 end

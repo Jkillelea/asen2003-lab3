@@ -16,8 +16,4 @@ function data = load_file(filepath)
   data.wheel_speed           = raw_data(:, 4);
   data.slide_speed           = raw_data(:, 5);
   data.actual_sample_time_ms = raw_data(:, 6);
-
-  % format shortG
-  % disp(data.wheel_position)
-  % pause
 end

@@ -4,9 +4,9 @@ function v = vB(omega, theta)
   %            theta : angular position of the wheel, in degrees
   % @RETURNS => v : collar speed, in meters per second
 
-  r = 7.7   ; % cm                                * (10^-2); % m
-  d = 15.3  ; % cm                                * (10^-2); % m
-  l = 25.4; % cm                                * (10^-2); % m
+  r = 7.7;  % cm
+  d = 15.3; % cm
+  l = 25.4; % cm
 
   beta = acosd(sqrt(l^2 - (d - r.*sind(theta)).^2) ...
                           ./                       ...

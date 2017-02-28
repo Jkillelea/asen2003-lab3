@@ -23,14 +23,14 @@
 % Matthew Jonas
 
 % %%%% b: %%%%
-clear all; close all; clc;
+clear; close all; clc;
 outfile = fopen('output_table.txt', 'w'); % empty contents of file
 fclose(outfile);
 
 % %%%% c: %%%%
-r = 8   ; % cm                                  * (10^-2); % m
-d = 17  ; % cm                                  * (10^-2); % m
-l = 25.5; % cm                                  * (10^-2); % m
+r = 8   ; % cm
+d = 17  ; % cm
+l = 25.5; % cm
 
 % %%%% d: %%%%
 data_folder = '../locomotive-data';
@@ -38,19 +38,18 @@ files       = dir([data_folder '/' '*V']); % regex. Learn it.
 numfiles    = size(files, 1);
 
 % %%%% e: %%%%
-results = {}; % for storing results
+results = {numfiles, 1}; % for storing results
 for i = 1:numfiles                                     % each file
-  filepath        = [data_folder, '/', files(i).name]; % get name
-  data            = load_file(filepath);               % load it
+  filepath       = [data_folder, '/', files(i).name]; % get name
+  data           = load_file(filepath);               % load it
   data.trialname = [files(i).name(1), files(i).name((end-2):end)]; % get the first char and last 3 chars to keep track of the origin of the data
-  results{i}      = analyze(data); % analyze and store
+  results{i}     = analyze(data); % analyze and store
 end
 
 for i = 1:numfiles % plot each result
   data = results{i};
 
   model_speed = vB(data.wheel_speed, data.pos);
-
   model_err   = model_speed - data.speed;
   mean_err    = mean(model_err);
   std_err     = std(model_err);
